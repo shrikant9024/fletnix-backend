@@ -1,8 +1,8 @@
 const User = require("../models/user");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const { createToken } = require("../service/jwt");
 
-const saltRounds = 10; // Use a more descriptive variable name
+const saltRounds = 10; 
 
 // Handle user signup
 async function handleSignup(req, res) {
