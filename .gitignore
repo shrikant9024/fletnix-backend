@@ -14,4 +14,18 @@ Thumbs.db
 # Environment variables
 .env
 
+# Build outputs
+dist/
+build/
 
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln
+
+# Dependency directories
+bower_components/
+jspm_packages/
