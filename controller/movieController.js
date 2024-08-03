@@ -6,7 +6,6 @@ async function showMovies(req, res) {
         // const { age } = req.user;
         const query = {};
 
-        // Apply filters from query parameters if they exist
         if (req.query.title) {
             query.title = new RegExp(req.query.title, 'i'); 
         }

@@ -20,4 +20,3 @@ app.use("/",router)
 
 app.listen(PORT,()=>console.log(`Server is running at ${PORT}`))
 
-// mongodb+srv://fletnix:Mongo4527@cluster0.apm1ods.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

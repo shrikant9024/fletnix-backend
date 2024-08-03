@@ -9,16 +9,15 @@ async function handleSignup(req, res) {
     try {
         const { email, name, password, age } = req.body;
 
-        // Check if user already exists
+     
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).send("User already exists");
         }
 
-        // Hash the password
+  
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        // Create a new user
         const newUser = await User.create({
             email,
             name,
@@ -33,30 +32,27 @@ async function handleSignup(req, res) {
     }
 }
 
-// Handle user login
+//  user login
 async function handleLogin(req, res) {
     const { email, password } = req.body;
 
     try {
-        // Find the user
+
         const loginUser = await User.findOne({ email });
         if (!loginUser) {
             return res.status(400).send("User does not exist");
         }
-
-        // Compare passwords
         const match = await bcrypt.compare(password, loginUser.password);
         if (!match) {
             return res.status(401).json({ error: "Wrong password" });
         }
 
-        // Create a JWT token
+
         const accessToken = createToken({ id: loginUser._id });
 
-        // Send the token in a cookie
         res.cookie("jwt", accessToken, {
-            httpOnly: true, // This should be true for security
-            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+            httpOnly: true, 
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) 
         });
 
         return res.status(200).json({ msg: "User logged in successfully" });
